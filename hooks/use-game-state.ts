@@ -73,7 +73,7 @@ export function useGameState() {
       const s = stateRef.current
       if (!s.roundActive) return
 
-      const spawnChance = 0.12 * s.targetSpawnRate
+      const spawnChance = 0.24 * s.targetSpawnRate
       if (Math.random() < spawnChance) {
         const totalMana = s.totalMana
         let availableTypes = TARGET_TYPES.filter((_, i) => {

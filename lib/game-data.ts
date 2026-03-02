@@ -20,10 +20,13 @@ export interface Upgrade {
   effect: UpgradeEffect
   effectValue: number
   maxLevel: number
+  col: number
+  row: number
   requires?: string[]
   tier: number
   unlocks?: string[]
 }
+
 
 export const UPGRADES: Upgrade[] = [
   // Tier 0 - Foundation
@@ -39,6 +42,8 @@ export const UPGRADES: Upgrade[] = [
     maxLevel: 50,
     tier: 0,
     unlocks: ["focus", "strike"],
+    col: 2,
+    row: 0,
   },
   {
     id: "familiar",
@@ -52,6 +57,8 @@ export const UPGRADES: Upgrade[] = [
     maxLevel: 30,
     tier: 0,
     unlocks: ["amplify", "lure"],
+    col: 4,
+    row: 0,
   },
   // Tier 1 - Empowerment
   {
@@ -67,6 +74,8 @@ export const UPGRADES: Upgrade[] = [
     requires: ["spark"],
     tier: 1,
     unlocks: ["surge"],
+    col: 1,
+    row: 1,
   },
   {
     id: "strike",
@@ -81,6 +90,8 @@ export const UPGRADES: Upgrade[] = [
     requires: ["spark"],
     tier: 1,
     unlocks: ["surge", "shatter"],
+    col: 3,
+    row: 1,
   },
   {
     id: "amplify",
@@ -95,6 +106,8 @@ export const UPGRADES: Upgrade[] = [
     requires: ["familiar"],
     tier: 1,
     unlocks: ["automaton"],
+    col: 4,
+    row: 1,
   },
   {
     id: "lure",
@@ -109,6 +122,8 @@ export const UPGRADES: Upgrade[] = [
     requires: ["familiar"],
     tier: 1,
     unlocks: ["automaton", "persist", "extend"],
+    col: 5,
+    row: 1,
   },
   // Tier 2 - Mastery
   {
@@ -124,6 +139,23 @@ export const UPGRADES: Upgrade[] = [
     requires: ["focus", "strike"],
     tier: 2,
     unlocks: ["nexus"],
+    col: 1,
+    row: 2,
+  },
+    {id: "focus2",
+    name: "Greater Focus",
+    description: "Increases critical strike multiplier",
+    icon: "Eye2",
+    baseCost: 500,
+    costMultiplier: 1.3,
+    effect: "critMultiplier",
+    effectValue: 0.5,
+    maxLevel: 10,
+    requires: ["focus"],
+    tier: 1,
+    unlocks: ["surge"],
+    col: 3,
+    row: 2,
   },
   {
     id: "automaton",
@@ -138,6 +170,8 @@ export const UPGRADES: Upgrade[] = [
     requires: ["amplify", "lure"],
     tier: 2,
     unlocks: ["nexus"],
+    col: 4,
+    row: 2,
   },
   {
     id: "shatter",
@@ -152,6 +186,8 @@ export const UPGRADES: Upgrade[] = [
     requires: ["strike"],
     tier: 2,
     unlocks: ["tempest"],
+    col: 2,
+    row: 2,
   },
   {
     id: "persist",
@@ -166,6 +202,8 @@ export const UPGRADES: Upgrade[] = [
     requires: ["lure"],
     tier: 2,
     unlocks: ["tempest"],
+    col: 5,
+    row: 2,
   },
   {
     id: "extend",
@@ -180,6 +218,8 @@ export const UPGRADES: Upgrade[] = [
     requires: ["lure"],
     tier: 2,
     unlocks: ["tempest"],
+    col: 6,
+    row: 2,
   },
   // Tier 3 - Ascendancy
   {
@@ -195,6 +235,8 @@ export const UPGRADES: Upgrade[] = [
     requires: ["surge", "automaton"],
     tier: 3,
     unlocks: ["ascension"],
+    col: 2,
+    row: 3,
   },
   {
     id: "tempest",
@@ -209,6 +251,8 @@ export const UPGRADES: Upgrade[] = [
     requires: ["shatter", "persist"],
     tier: 3,
     unlocks: ["ascension"],
+    col: 4,
+    row: 3,
   },
   // Tier 4 - Transcendence
   {
@@ -223,6 +267,8 @@ export const UPGRADES: Upgrade[] = [
     maxLevel: 5,
     requires: ["nexus", "tempest"],
     tier: 4,
+    col: 3,
+    row: 4,
   },
 ]
 
@@ -298,7 +344,7 @@ export const TARGET_TYPES: TargetType[] = [
     color: "oklch(0.7 0.18 200)",
     glowColor: "oklch(0.7 0.18 200 / 0.4)",
     baseHealth: 3,
-    manaReward: 5,
+    manaReward: 1,
     size: 48,
     symbol: "W",
   },
@@ -307,7 +353,7 @@ export const TARGET_TYPES: TargetType[] = [
     color: "oklch(0.7 0.18 160)",
     glowColor: "oklch(0.7 0.18 160 / 0.4)",
     baseHealth: 8,
-    manaReward: 15,
+    manaReward: 5,
     size: 56,
     symbol: "S",
   },
@@ -316,7 +362,7 @@ export const TARGET_TYPES: TargetType[] = [
     color: "oklch(0.6 0.2 280)",
     glowColor: "oklch(0.6 0.2 280 / 0.4)",
     baseHealth: 20,
-    manaReward: 40,
+    manaReward: 20,
     size: 64,
     symbol: "H",
   },
@@ -325,7 +371,7 @@ export const TARGET_TYPES: TargetType[] = [
     color: "oklch(0.65 0.22 340)",
     glowColor: "oklch(0.65 0.22 340 / 0.4)",
     baseHealth: 50,
-    manaReward: 120,
+    manaReward: 80,
     size: 72,
     symbol: "P",
   },
@@ -334,7 +380,7 @@ export const TARGET_TYPES: TargetType[] = [
     color: "oklch(0.75 0.15 80)",
     glowColor: "oklch(0.75 0.15 80 / 0.4)",
     baseHealth: 150,
-    manaReward: 400,
+    manaReward: 200,
     size: 80,
     symbol: "E",
   },

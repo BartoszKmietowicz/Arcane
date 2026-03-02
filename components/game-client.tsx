@@ -80,10 +80,10 @@ export function GameClient() {
             </div>
             {/* Minimal mana counter */}
             <span
-              className="text-sm font-mono tabular-nums"
+              className="text-sm font-mono tabular-nums absolute top-4 right-4 border border-border/40 bg-secondary/10 overflow-hidden p-4 rounded-lg"
               style={{ color: "oklch(0.65 0.18 200 / 0.7)" }}
             >
-              +{formatMana(state.roundMana)} mana this round
+              +{formatMana(state.roundMana)} mana
             </span>
           </div>
 
